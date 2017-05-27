@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <!--
+    <comment>Propietats per connectar via JDBC</comment>
+    <entry key="driver">oracle.jdbc.driver.OracleDriver</entry>
+    <entry key="url">jdbc:oracle:thin:@10.132.4.0:1521:XE</entry>
+    <entry key="user">root</entry>
+    <entry key="password"></entry>
+    -->
+    
+    
+    <entry key="driver">com.mysql.jdbc.Driver</entry>
+    <entry key="url">jdbc:mysql://127.0.0.1:3306/autoescola</entry>
+    <entry key="user">root</entry>
+    <entry key="password"></entry>
+    
+</properties>
