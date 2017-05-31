@@ -5,6 +5,7 @@
  */
 package info.infomila.autoescola.GUI;
 
+import info.infomila.autoescola.interficie.persistencia.IGestorBD;
 import info.infomila.autoescola.models.Alumne;
 import info.infomila.autoescola.models.GestorBDException;
 import info.infomila.autoescola.models.Practica;
@@ -32,13 +33,13 @@ public class LlistaPractiques extends javax.swing.JDialog
     public static final Pattern VALID_DATE_REGEX = Pattern.compile("([0-9]{2})\\/([0-9]{2})\\/([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2})", Pattern.CASE_INSENSITIVE);
 
     private List<Practica> llPractiques;
-    private GestorBD bd;
+    private IGestorBD bd;
     private Alumne alumne;
     
     /**
      * Creates new form Practiques
      */
-    public LlistaPractiques(java.awt.Frame parent, Alumne alumne)
+    public LlistaPractiques(java.awt.Frame parent, Alumne alumne, IGestorBD bd)
     {
         super(parent,true);
         

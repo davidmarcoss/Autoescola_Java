@@ -5,6 +5,7 @@
  */
 package info.infomila.autoescola.GUI;
 
+import info.infomila.autoescola.interficie.persistencia.IGestorBD;
 import info.infomila.autoescola.models.Alumne;
 import info.infomila.autoescola.models.GestorBDException;
 import info.infomila.autoescola.models.Professor;
@@ -20,12 +21,12 @@ public class GestioAlumne extends javax.swing.JDialog
 {
     private Alumne alumne;
     private List<Professor> llProfessors;
-    private GestorBD bd;
+    private IGestorBD bd;
     
     /**
      * Creates new form GestioAlumne
      */
-    public GestioAlumne(java.awt.Frame parent, Alumne alumne, List<Professor> llProfessors, GestorBD bd)
+    public GestioAlumne(java.awt.Frame parent, Alumne alumne, List<Professor> llProfessors, IGestorBD bd)
     {
         super(parent,true);
         
@@ -35,7 +36,6 @@ public class GestioAlumne extends javax.swing.JDialog
         {
             this.alumne = alumne;
             this.llProfessors = llProfessors;
-            this.bd = bd;
             
             label_titol.setText("Modificació de l'Alumne: " + alumne.getNom() + ", " + alumne.getCognoms());
             
@@ -252,16 +252,19 @@ public class GestioAlumne extends javax.swing.JDialog
         String poblacio = input_poblacio.getText();
         String adreca = input_adreca.getText();
         Professor professor = llProfessors.get(input_professor.getSelectedIndex());
-        
-        try
+
+        if(!nif.equals(alumne.getNif()))
         {
-            bd.updateAlumne(new Alumne(nif, nom, cognoms, correu, poblacio, adreca, telefon, professor.getNif(), professor.getNom() + ", " + professor.getCognoms(), 0));
-            
-            dispose();
-        }
-        catch (GestorBDException ex)
-        {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            try
+            {
+                bd.updateAlumne(new Alumne(nif, nom, cognoms, correu, poblacio, adreca, telefon, professor.getNif(), professor.getNom() + ", " + professor.getCognoms(), 0));
+
+                dispose();
+            }
+            catch (GestorBDException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

@@ -5,6 +5,7 @@
  */
 package info.infomila.autoescola.GUI;
 
+import info.infomila.autoescola.interficie.persistencia.IGestorBD;
 import info.infomila.autoescola.models.Alumne;
 import info.infomila.autoescola.models.GestorBDException;
 import info.infomila.autoescola.models.Practica;
@@ -25,14 +26,14 @@ import javax.swing.JOptionPane;
  */
 public class GestioPractica extends javax.swing.JDialog
 {
-    private GestorBD bd;
+    private IGestorBD bd;
     private Practica practica;
     private Alumne alumne;
     
     /**
      * Creates new form GestioAlumne
      */
-    public GestioPractica(java.awt.Dialog parent, Practica practica, Alumne alumne, GestorBD bd)
+    public GestioPractica(java.awt.Dialog parent, Practica practica, Alumne alumne, IGestorBD bd)
     {
         super(parent,true);
         
@@ -42,7 +43,6 @@ public class GestioPractica extends javax.swing.JDialog
         {
             this.practica = practica;
             this.alumne = alumne;
-            this.bd = bd;
             
             label_titol.setText("Modificació de la pràctica: " + practica.getId());
         }

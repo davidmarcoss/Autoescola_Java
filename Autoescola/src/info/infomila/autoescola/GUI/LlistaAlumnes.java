@@ -10,6 +10,8 @@ import info.infomila.autoescola.models.Alumne;
 import info.infomila.autoescola.persistencia.GestorBD;
 import info.infomila.autoescola.models.GestorBDException;
 import info.infomila.autoescola.models.Professor;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,7 +29,8 @@ public class LlistaAlumnes extends javax.swing.JFrame
 {
     private List<Alumne> llAlumnes;
     private List<Professor> llProfessors;
-    private GestorBD bd = null;
+    private IGestorBD bd = null;
+    private static String classNameArg = null;
 
     /**
      * Creates new form Alumnes
@@ -38,7 +41,8 @@ public class LlistaAlumnes extends javax.swing.JFrame
         
         try
         {
-            bd = new GestorBD();
+            //bd = new GestorBD();
+            bd = (IGestorBD) Class.forName(classNameArg).newInstance();
             
             omplirTaula();
 
@@ -47,11 +51,43 @@ public class LlistaAlumnes extends javax.swing.JFrame
             {
                 input_professor.addItem(professor);
             }
+            
 
+
+            this.addWindowListener(new WindowAdapter(){
+                public void windowClosing(WindowEvent e){
+                    int i = JOptionPane.showConfirmDialog(null, "Estás segur que vols sortir?");
+                    if(i == 0)
+                    {
+                        try
+                        {
+                            bd.close();
+                            System.exit(0);  
+                        }
+                        catch (GestorBDException ex)
+                        {
+                            Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+            });
+            
         } catch(GestorBDException ex)
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             System.exit(0);
+        }
+        catch (ClassNotFoundException ex)
+        {
+            Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (InstantiationException ex)
+        {
+            Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (IllegalAccessException ex)
+        {
+            Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -118,7 +154,7 @@ public class LlistaAlumnes extends javax.swing.JFrame
 
         jButton1.setText("jButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Autoboxy");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -361,7 +397,7 @@ public class LlistaAlumnes extends javax.swing.JFrame
         {
             Alumne alumneSeleccionat = llAlumnes.get(rowIndex);
             
-            new LlistaPractiques(this, alumneSeleccionat).setVisible(true);
+            new LlistaPractiques(this, alumneSeleccionat, bd).setVisible(true);
         }
     }//GEN-LAST:event_btnGestionarActionPerformed
 
@@ -389,7 +425,7 @@ public class LlistaAlumnes extends javax.swing.JFrame
             }
             catch (GestorBDException ex)
             {
-                Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -414,7 +450,7 @@ public class LlistaAlumnes extends javax.swing.JFrame
         }
         catch (NoSuchAlgorithmException ex)
         {
-            Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         
         // Recollim tots els valors entrats
@@ -485,22 +521,32 @@ public class LlistaAlumnes extends javax.swing.JFrame
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        try
         {
-            public void run()
+            classNameArg = args[0];
+
+            java.awt.EventQueue.invokeLater(new Runnable()
             {
-                try
-                {
-                    new LlistaAlumnes().setVisible(true);
+                public void run()
+                { 
+                    try 
+                    {
+                        new LlistaAlumnes().setVisible(true);
+                    } 
+                    catch (GestorBDException ex)
+                    {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
                 }
-                catch (GestorBDException ex)
-                {
-                    Logger.getLogger(LlistaAlumnes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-       
+            });
+        }
+        catch(ArrayIndexOutOfBoundsException ex)
+        {
+            JOptionPane.showMessageDialog(null, "S'ha d'indicar el nom de la classe Gestora de la Base de Dades");
+        }
+        
+        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
