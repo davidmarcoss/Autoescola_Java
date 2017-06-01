@@ -39,30 +39,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="240" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <EmptySpace pref="239" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_nif" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="input_nif" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="label_correu" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_nom" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="input_nom" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="label_correu" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="input_correu" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_telefon" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="input_telefon" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                          <Component id="label_cognoms" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="input_cognoms" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -87,8 +74,25 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="label_nom" min="-2" max="-2" attributes="0"/>
+                          <Component id="input_nom" min="-2" pref="167" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="label_cognoms" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="input_cognoms" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -110,24 +114,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="label_titol" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="label_nif" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="input_nif" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="label_nom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_cognoms" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="label_cognoms" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="input_cognoms" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="label_nom" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="input_nom" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="input_cognoms" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -169,13 +168,6 @@
     <Component class="javax.swing.JLabel" name="label_professor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Professor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="input_nif">
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_nif">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NIF"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="input_nom">

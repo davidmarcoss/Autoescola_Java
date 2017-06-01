@@ -43,6 +43,7 @@ public class GestioPractica extends javax.swing.JDialog
         {
             this.practica = practica;
             this.alumne = alumne;
+            this.bd = bd;
             
             label_titol.setText("Modificació de la pràctica: " + practica.getId());
         }

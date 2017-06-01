@@ -36,10 +36,10 @@ public class GestioAlumne extends javax.swing.JDialog
         {
             this.alumne = alumne;
             this.llProfessors = llProfessors;
+            this.bd = bd;
             
             label_titol.setText("Modificació de l'Alumne: " + alumne.getNom() + ", " + alumne.getCognoms());
             
-            input_nif.setText(this.alumne.getNif());
             input_nom.setText(this.alumne.getNom());
             input_cognoms.setText(this.alumne.getCognoms());
             input_telefon.setText(this.alumne.getTelefon());
@@ -76,8 +76,6 @@ public class GestioAlumne extends javax.swing.JDialog
         btnCrear = new javax.swing.JButton();
         jMenuItem1 = new javax.swing.JMenuItem();
         label_professor = new javax.swing.JLabel();
-        input_nif = new javax.swing.JTextField();
-        label_nif = new javax.swing.JLabel();
         input_nom = new javax.swing.JTextField();
         label_nom = new javax.swing.JLabel();
         input_cognoms = new javax.swing.JTextField();
@@ -109,8 +107,6 @@ public class GestioAlumne extends javax.swing.JDialog
 
         label_professor.setText("Professor");
 
-        label_nif.setText("NIF");
-
         label_nom.setText("Nom");
 
         label_cognoms.setText("Cognoms");
@@ -139,26 +135,16 @@ public class GestioAlumne extends javax.swing.JDialog
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(239, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_nif)
-                                    .addComponent(input_nif, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_correu))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_nom)
-                                    .addComponent(input_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_correu)
                             .addComponent(input_correu, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_telefon)
-                            .addComponent(input_telefon, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_cognoms)
-                            .addComponent(input_cognoms, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(input_telefon, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(input_professor, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -173,8 +159,20 @@ public class GestioAlumne extends javax.swing.JDialog
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(label_adreca)
-                                .addComponent(input_adreca, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(224, 224, 224))
+                                .addComponent(input_adreca, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_nom)
+                            .addComponent(input_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(label_cognoms)
+                                .addGap(167, 167, 167))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(input_cognoms)))))
+                .addGap(225, 225, 225))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -190,21 +188,17 @@ public class GestioAlumne extends javax.swing.JDialog
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(label_titol, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(label_nif)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(input_nif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label_cognoms)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(input_cognoms, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_nom)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_nom)
+                            .addComponent(label_cognoms))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(input_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(input_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(input_cognoms, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(input_correu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,16 +210,14 @@ public class GestioAlumne extends javax.swing.JDialog
                         .addComponent(input_telefon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_adreca)
-                        .addGap(54, 54, 54))
+                    .addComponent(label_adreca)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label_poblacio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(input_poblacio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input_adreca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
+                            .addComponent(input_adreca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(label_professor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(input_professor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,7 +236,7 @@ public class GestioAlumne extends javax.swing.JDialog
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnGuardarActionPerformed
     {//GEN-HEADEREND:event_btnGuardarActionPerformed
-        String nif = input_nif.getText();
+
         String nom = input_nom.getText();
         String cognoms = input_cognoms.getText();
         String telefon = input_telefon.getText();
@@ -253,19 +245,18 @@ public class GestioAlumne extends javax.swing.JDialog
         String adreca = input_adreca.getText();
         Professor professor = llProfessors.get(input_professor.getSelectedIndex());
 
-        if(!nif.equals(alumne.getNif()))
-        {
-            try
-            {
-                bd.updateAlumne(new Alumne(nif, nom, cognoms, correu, poblacio, adreca, telefon, professor.getNif(), professor.getNom() + ", " + professor.getCognoms(), 0));
 
-                dispose();
-            }
-            catch (GestorBDException ex)
-            {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
+        try
+        {
+            bd.updateAlumne(new Alumne(alumne.getNif(), nom, cognoms, correu, poblacio, adreca, telefon, professor.getNif(), professor.getNom() + ", " + professor.getCognoms(), 0));
+         
+            dispose();
         }
+        catch (GestorBDException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,7 +265,6 @@ public class GestioAlumne extends javax.swing.JDialog
     private javax.swing.JTextField input_adreca;
     private javax.swing.JTextField input_cognoms;
     private javax.swing.JTextField input_correu;
-    private javax.swing.JTextField input_nif;
     private javax.swing.JTextField input_nom;
     private javax.swing.JTextField input_poblacio;
     private javax.swing.JComboBox<String> input_professor;
@@ -283,7 +273,6 @@ public class GestioAlumne extends javax.swing.JDialog
     private javax.swing.JLabel label_adreca;
     private javax.swing.JLabel label_cognoms;
     private javax.swing.JLabel label_correu;
-    private javax.swing.JLabel label_nif;
     private javax.swing.JLabel label_nom;
     private javax.swing.JLabel label_poblacio;
     private javax.swing.JLabel label_professor;

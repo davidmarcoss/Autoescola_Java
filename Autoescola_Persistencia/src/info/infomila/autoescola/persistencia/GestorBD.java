@@ -165,7 +165,7 @@ public class GestorBD implements IGestorBD
             PreparedStatement ps = null;
             try
             {
-                String query = "INSERT INTO alumnes VALUES(?, ?, ?, ?, ? ,?, ?, ?, ?, ?)";
+                String query = "INSERT INTO alumnes(alu_nif, alu_nom, alu_cognoms, alu_correu, alu_password, alu_poblacio, alu_adreca, alu_telefon, alu_professor_nif, alu_desactivat) VALUES(?, ?, ?, ?, ? ,?, ?, ?, ?, ?)";
                 ps = conn.prepareStatement(query);
 
                 ps.setString(1, alumne.getNif());
@@ -225,17 +225,17 @@ public class GestorBD implements IGestorBD
             PreparedStatement ps = null;
             try
             {
-                String query = "UPDATE alumnes SET alu_nif = ?, alu_nom = ?, alu_cognoms = ?, alu_correu = ?, alu_poblacio = ?, alu_adreca = ?, alu_telefon = ?, alu_professor_nif = ?";
+                String query = "UPDATE alumnes SET alu_nom = ?, alu_cognoms = ?, alu_correu = ?, alu_poblacio = ?, alu_adreca = ?, alu_telefon = ?, alu_professor_nif = ? WHERE alu_nif = ?";
                 ps = conn.prepareStatement(query);
 
-                ps.setString(1, alumne.getNif());
-                ps.setString(2, alumne.getNom());
-                ps.setString(3, alumne.getCognoms());
-                ps.setString(4, alumne.getCorreu());
-                ps.setString(5, alumne.getPoblacio());
-                ps.setString(6, alumne.getAdreca());
-                ps.setString(7, alumne.getTelefon());
-                ps.setString(8, alumne.getProfessor());
+                ps.setString(1, alumne.getNom());
+                ps.setString(2, alumne.getCognoms());
+                ps.setString(3, alumne.getCorreu());
+                ps.setString(4, alumne.getPoblacio());
+                ps.setString(5, alumne.getAdreca());
+                ps.setString(6, alumne.getTelefon());
+                ps.setString(7, alumne.getProfessor());
+                ps.setString(8, alumne.getNif());
                 ps.executeUpdate();
 
                 conn.commit();
@@ -378,6 +378,7 @@ public class GestorBD implements IGestorBD
             try
             {
                 int queryId = this.getLastId("alumne_practiques");
+                queryId += 1;
                 
                 String query = "INSERT INTO alumne_practiques VALUES(?, ?, ?, ?, ?)";
                 ps = conn.prepareStatement(query);
